@@ -17,7 +17,7 @@ import { API_CONFIG } from '../../config/api.config';
   templateUrl: 'categorias.html',
 })
 export class CategoriasPage {
-  
+
   bucketUrl: string = API_CONFIG.bucketBaseUrl;
   itens: categoriaDTO[];
 
@@ -25,12 +25,10 @@ export class CategoriasPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoriasPage');
+    
     this.categoriaService.findAll().subscribe(res => {
       this.itens = res;
-    }, error => {
-
-    });
+    }, error => {});
 
   }
 
