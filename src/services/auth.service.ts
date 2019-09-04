@@ -24,10 +24,11 @@ export class AuthService {
                 });
     }
 
-    refreshToken(creds: CredenciaisDTO) {
+    refreshToken() {
+        
         return this.http
             .post(`${API_CONFIG.baseUrl}/auth/refresh_token`,
-                creds, {
+                {}, {
                     observe: 'response',
                     responseType: 'text'
                 });
