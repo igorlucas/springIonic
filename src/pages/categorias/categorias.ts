@@ -19,11 +19,15 @@ export class CategoriasPage {
   }
 
   ionViewDidLoad() {
-    
+
     this.categoriaService.findAll().subscribe(res => {
       this.itens = res;
-    }, error => {});
+    }, error => { });
 
+  }
+
+  showProdutos(categoriaId: string) {
+    this.navCtrl.setRoot("ProdutosPage", { categoriaId: categoriaId });
   }
 
 }

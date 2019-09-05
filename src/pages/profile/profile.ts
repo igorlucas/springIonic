@@ -22,7 +22,7 @@ export class ProfilePage {
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email).subscribe(res => {
-        this.cliente = res;
+        this.cliente = res as ClienteDTO;
       }, error => {
         if (error.status == 403)
           this.navCtrl.setRoot("HomePage");
