@@ -1,40 +1,19 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header> -->
-
 <ion-content padding>
-  <h3>Sistema de Pedidos</h3>
-  <img src="assets/imgs/tela-ini.png" alt="tela-ini">
+  <h3>Sistema de pedidos</h3>
+
+  <img src="assets/imgs/tela-inicial.png" alt="logo">
 
   <form>
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input type="text" name="email" [(ngModel)]="creds.email"></ion-input>
+      <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="creds.senha"></ion-input>
+      <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
     </ion-item>
     <button ion-button block (click)="login()">Entrar</button>
   </form>
   <button ion-button block outline (click)="signup()">Registrar</button>
+
 </ion-content>
-
-<style>
-  h3 {
-    text-align: center;
-  }
-
-  img {
-    width: 200px;
-    align-self: center;
-    margin: auto;
-    display: block;
-    padding: 10px;
-  }
-</style>

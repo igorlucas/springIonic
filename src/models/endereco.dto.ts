@@ -1,4 +1,4 @@
-import { CidadeDTO } from "./cidadeDTO";
+import { CidadeDTO } from "./cidade.dto";
 
 export interface EnderecoDTO {
     id : string;

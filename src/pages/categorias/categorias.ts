@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CategoriaService } from '../../services/domain/categoria.service';
-import { categoriaDTO } from '../../models/categoriaDTO';
+import { CategoriaDTO } from '../../models/categoria.dto';
 import { API_CONFIG } from '../../config/api.config';
 
+/**
+ * Generated class for the CategoriasPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -13,21 +19,24 @@ import { API_CONFIG } from '../../config/api.config';
 export class CategoriasPage {
 
   bucketUrl: string = API_CONFIG.bucketBaseUrl;
-  itens: categoriaDTO[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaService) {
+  items: CategoriaDTO[];
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public categoriaService: CategoriaService) {
   }
 
   ionViewDidLoad() {
-
-    this.categoriaService.findAll().subscribe(res => {
-      this.itens = res;
-    }, error => { });
-
+    this.categoriaService.findAll()
+      .subscribe(response => {
+        this.items = response;
+      },
+      error => {});
   }
 
-  showProdutos(categoriaId: string) {
-    this.navCtrl.setRoot("ProdutosPage", { categoriaId: categoriaId });
+  showProdutos(categoria_id : string) {
+    this.navCtrl.push('ProdutosPage', {categoria_id: categoria_id});    
   }
-
 }

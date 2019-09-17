@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { EstadoDTO } from '../../models/estadoDTO';
-import { CidadeDTO } from '../../models/cidadeDTO';
 import { CidadeService } from '../../services/domain/cidade.service';
 import { EstadoService } from '../../services/domain/estado.service';
+import { EstadoDTO } from '../../models/estado.dto';
+import { CidadeDTO } from '../../models/cidade.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @IonicPage()
 @Component({
@@ -68,7 +68,6 @@ export class SignupPage {
   }
 
   signupUser() {
-    
     this.clienteService.insert(this.formGroup.value)
       .subscribe(response => {
         this.showInsertOk();

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
-import { IonicPage } from 'ionic-angular/navigation/ionic-page';
-import { CredenciaisDTO } from '../../models/credenciaisDTO';
+import { NavController, IonicPage } from 'ionic-angular';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
 
 @IonicPage()
@@ -11,40 +11,45 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomePage {
 
-  creds: CredenciaisDTO = { email: "", senha: "" };
+  creds : CredenciaisDTO = {
+    email: "",
+    senha: ""
+  };
 
-  constructor(public navCtrl: NavController, public menu: MenuController, private auth: AuthService) {
+  constructor(
+    public navCtrl: NavController, 
+    public menu: MenuController,
+    public auth: AuthService) {
 
-  }
-
-  login() {
-
-    this.auth.authenticate(this.creds).subscribe(res => {
-      this.auth.successfulLogin(res.headers.get("Authorization"));
-      this.navCtrl.setRoot("CategoriasPage");
-    }, error => { })
-
-  }
-
-  signup() {
-    this.navCtrl.push("SignupPage");
-  }
-
-  ionViewDidEnter() {
-
-    this.auth.refreshToken()
-      .subscribe(response => {
-        this.auth.successfulLogin(response.headers.get('Authorization'));
-        this.navCtrl.setRoot('CategoriasPage');
-      },
-        error => { });
   }
 
   ionViewWillEnter() {
     this.menu.swipeEnable(false);
   }
-
+    
   ionViewDidLeave() {
     this.menu.swipeEnable(true);
+  }
+
+  ionViewDidEnter() {
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {});  
+  }
+
+  login() {
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {});    
+  }
+ 
+  signup() {
+    this.navCtrl.push('SignupPage');
   }
 }

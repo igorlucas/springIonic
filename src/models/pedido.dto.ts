@@ -1,8 +1,6 @@
-import { RefDTO } from "./refDTO";
-
-import { PagamentoDTO } from "./pagamentoDTO";
-
-import { ItemPedidoDTO } from "./itemPedidoDTO";
+import { RefDTO } from "./ref.dto";
+import { PagamentoDTO } from "./pagamento.dto";
+import { ItemPedidoDTO } from "./item-pedido.dto";
 
 export interface PedidoDTO {
     cliente: RefDTO;

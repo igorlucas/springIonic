@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProdutoDTO } from '../../models/produto.dto';
 import { API_CONFIG } from '../../config/api.config';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-import { ProdutoDTO } from '../../models/produtoDTO';
 
 @IonicPage()
 @Component({
@@ -27,7 +27,7 @@ export class ProdutosPage {
   }
 
   loadData() {
-    let categoria_id = this.navParams.get('categoriaId');
+    let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
     this.produtoService.findByCategoria(categoria_id, this.page, 10)
       .subscribe(response => {

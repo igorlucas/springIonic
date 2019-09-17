@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CartItem } from '../../models/cart-item';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { API_CONFIG } from '../../config/api.config';
 import { CartService } from '../../services/domain/cart.service';
-import { CartItem } from '../../models/cartItem';
-import { ProdutoDTO } from '../../models/produtoDTO';
+import { ProdutoDTO } from '../../models/produto.dto';
 
 @IonicPage()
 @Component({

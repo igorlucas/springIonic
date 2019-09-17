@@ -11,6 +11,9 @@ import { EstadoService } from '../../services/domain/estado.service';
   imports: [
     IonicPageModule.forChild(SignupPage),
   ],
-  providers:[CidadeService, EstadoService]
+  providers: [
+    CidadeService,
+    EstadoService
+  ]
 })
 export class SignupPageModule {}

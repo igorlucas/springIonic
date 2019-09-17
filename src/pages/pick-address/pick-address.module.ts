@@ -10,4 +10,4 @@ import { PickAddressPage } from './pick-address';
     IonicPageModule.forChild(PickAddressPage),
   ],
 })
-export class PicAddressPageModule {}
+export class PickAddressPageModule {}
